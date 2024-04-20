@@ -28,8 +28,3 @@ class User(BaseModel, Base):
     last_name = Column(String(128))
     places = relationship("Place", backref="user", cascade="delete")
     reviews = relationship("Review", backref="user", cascade="delete")
-    reviews = relationship(
-        'Review',
-        cascade="all, delete, delete-orphan",
-        backref='user'
-    ) if os.getenv('HBNB_TYPE_STORAGE') == 'db' else None
